@@ -82,6 +82,5 @@ async def process_phone(message: types.Message, state: FSMContext):
 @router.message(StateFilter(RequestForm.time), F.text)
 async def process_time(message: types.Message, state: FSMContext):
     user_data = await state.get_data()
-    print(user_data)
     await message.reply("Спасибо за заявку! Мы свяжемся с вами в ближайшее время.")
     await state.clear()
