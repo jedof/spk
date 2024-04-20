@@ -16,13 +16,15 @@ logging.basicConfig(level=logging.INFO)
 
 
 bot = Bot(token=TOKEN)
+
     
 
 async def main():
     dp = Dispatcher()
+    dp.include_router(hendlers_router)
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
-    dp.include_router(hendlers_router)
+    
 
 
 if __name__ == '__main__':
