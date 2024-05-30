@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  faq_bot:
+    container_name: spk
+    build: .
+    command: bash -c 'python3 main.py'
+    restart: always
+    env_file: ./.env
