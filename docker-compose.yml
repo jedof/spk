@@ -1,9 +1,23 @@
 version: '3.9'
 
 services:
-  faq_bot:
+  spk_bot:
     container_name: spk
     build: .
-    command: bash -c 'python3 main.py'
+    command: bash -c 'python3 bot/main.py'
+    restart: always
+    env_file: ./.env
+    environment:
+      - DB_URL=postgresql+asyncpg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:${DB_PORT}/${POSTGRES_DB}
+    volumes:
+      - ./bot:/src/bot
+
+  db:
+    container_name: spk_db
+    image: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_data:/var/lib/postgres/data
     restart: always
     env_file: ./.env

@@ -8,6 +8,4 @@ ENV PYTHONUNBUFFERED 1
 ADD requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
-ADD ./main.py .
-ADD ./hendlers.py .
-ADD ./.env .
+COPY bot ./bot
